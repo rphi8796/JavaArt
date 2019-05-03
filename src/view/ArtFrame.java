@@ -1,5 +1,9 @@
 package view;
 
-public class ArtFrame {
+import controller.ArtController;
+import javax.swing.JFrame;
 
+public class ArtFrame extends JFrame
+{
+	
 }
