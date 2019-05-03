@@ -25,7 +25,7 @@ public class ArtFrame extends JFrame
 		this.setContentPane(appPanel);
 		this.setSize(1000, 800);
 		this.setResizable(true);
-		this.setTitle("A 3 year old could do this");
+		this.setTitle("... Garfunkel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		this.setVisible(true);
 	}
