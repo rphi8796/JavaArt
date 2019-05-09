@@ -26,8 +26,16 @@ public class ArtPanel extends JPanel
 	private ArtController app;
 	
 	private SpringLayout appLayout;
+	private SpringLayout appLayout_1;
 	
 	private SubPanel canvas;
+	
+	public static Color myRed = new Color(240, 128, 128);
+	public static Color myOrange = new Color(255, 140, 0);
+	public static Color myYellow = new Color(240, 230, 140);
+	public static Color myGreen = new Color(46, 139, 87);
+	public static Color myBlue = new Color(0, 191, 255);
+	public static Color myViolet = new Color(147, 112, 219);
 	
 	private JButton red;
 	private JButton orange;
@@ -42,7 +50,7 @@ public class ArtPanel extends JPanel
 	
 	private JSlider widthSlider;
 	
-	private JScrollPane canvasPane;
+	private JScrollPane canvasPane_1;
 	
 	private ImageIcon duck;
 	
@@ -55,10 +63,9 @@ public class ArtPanel extends JPanel
 		super();
 		this.app = app;
 		this.canvas = new SubPanel(app);
-		canvasPane = new JScrollPane();
 		appLayout = new SpringLayout();
 		
-		appLayout = new SpringLayout();
+		appLayout_1 = new SpringLayout();
 		
 		red = new JButton();
 		orange = new JButton();
@@ -68,7 +75,9 @@ public class ArtPanel extends JPanel
 		violet = new JButton();
 		random = new JButton();
 		
-		canvasPane = new JScrollPane();
+		canvasPane_1 = new JScrollPane();
+
+		
 		
 		duck = new ImageIcon();
 		
@@ -77,7 +86,10 @@ public class ArtPanel extends JPanel
 		clearButton = new JButton("Clear the panel");
 		widthSlider = new JSlider(MINIMUM_LINE,MAXIMUM_LINE);
 		colorPanel = new JPanel(new GridLayout(0, 1));
+
 		menuPanel = new JPanel(new GridLayout(0, 1));
+
+
 		
 		setupButtons();
 		setupPanel();
@@ -101,10 +113,11 @@ public class ArtPanel extends JPanel
 	
 	public void setupPanel()
 	{
-		this.setLayout(appLayout);
-		
+		this.setPreferredSize(new Dimension(1200, 1000));
+		this.setLayout(appLayout_1);
+		this.add(menuPanel);
 		this.add(colorPanel);
-		this.add(canvasPane);
+		this.add(canvasPane_1);
 	}
 	
 	public void setupSlider()
@@ -126,12 +139,27 @@ public class ArtPanel extends JPanel
 		colorPanel.setPreferredSize(new Dimension(50, 700));
 		menuPanel.setPreferredSize(new Dimension(50, 700));
 		
-		violet.setForeground(new Color(75, 0, 130));
-		blue.setForeground(Color.BLUE);
-		green.setForeground(Color.GREEN);
-		orange.setForeground(Color.ORANGE);
-		yellow.setForeground(Color.YELLOW);
-		red.setForeground(Color.RED);
+		violet.setOpaque(true);
+		blue.setOpaque(true);
+		green.setOpaque(true);
+		orange.setOpaque(true);
+		yellow.setOpaque(true);
+		red.setOpaque(true);
+		violet.setBorderPainted(false);
+		blue.setBorderPainted(false);
+		green.setBorderPainted(false);
+		yellow.setBorderPainted(false);
+		orange.setBorderPainted(false);
+		red.setBorderPainted(false);
+		
+		
+		
+		violet.setBackground(myViolet);
+		blue.setBackground(myBlue);
+		green.setBackground(myGreen);
+		orange.setBackground(myOrange);
+		yellow.setBackground(myYellow);
+		red.setBackground(myRed);
 		
 		colorPanel.add(red);
 		colorPanel.add(orange);
@@ -148,35 +176,37 @@ public class ArtPanel extends JPanel
 	
 	public void setupScrollPane()
 	{
-		canvasPane.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
-		canvasPane.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
-		canvasPane.setViewportView(canvas);
+		canvasPane_1.setHorizontalScrollBarPolicy(JScrollPane.HORIZONTAL_SCROLLBAR_AS_NEEDED);
+		canvasPane_1.setVerticalScrollBarPolicy(JScrollPane.VERTICAL_SCROLLBAR_AS_NEEDED);
+		canvasPane_1.setViewportView(canvas);
 	}
 	
 	public void setupLayout()
 	{
-		appLayout.putConstraint(SpringLayout.NORTH, colorPanel,0,SpringLayout.NORTH, canvasPane);
-		appLayout.putConstraint(SpringLayout.SOUTH, colorPanel,0,SpringLayout.SOUTH, canvasPane);
-		appLayout.putConstraint(SpringLayout.WEST, colorPanel,50,SpringLayout.EAST, canvasPane);
-		appLayout.putConstraint(SpringLayout.EAST, colorPanel,0,SpringLayout.WEST, menuPanel);
+		appLayout_1.putConstraint(SpringLayout.NORTH, canvasPane_1, 80, SpringLayout.NORTH, this);
+		appLayout_1.putConstraint(SpringLayout.WEST, canvasPane_1, 30, SpringLayout.WEST, this);
+		appLayout_1.putConstraint(SpringLayout.SOUTH, canvasPane_1, -80, SpringLayout.SOUTH, this);
+		appLayout_1.putConstraint(SpringLayout.EAST, canvasPane_1, -450, SpringLayout.EAST, this);
 		
-		appLayout.putConstraint(SpringLayout.WEST, colorPanel,200,SpringLayout.EAST, canvasPane);
-		appLayout.putConstraint(SpringLayout.SOUTH, colorPanel,0,SpringLayout.SOUTH, canvasPane);
-		appLayout.putConstraint(SpringLayout.EAST, colorPanel, -50,SpringLayout.EAST, this);
-		appLayout.putConstraint(SpringLayout.NORTH, colorPanel,0,SpringLayout.NORTH, canvasPane);
+		appLayout_1.putConstraint(SpringLayout.NORTH, colorPanel, 30, SpringLayout.NORTH, this);
+		appLayout_1.putConstraint(SpringLayout.WEST, colorPanel, 30, SpringLayout.EAST, canvasPane_1);
+		appLayout_1.putConstraint(SpringLayout.SOUTH, colorPanel, -30, SpringLayout.SOUTH, this);
+		appLayout_1.putConstraint(SpringLayout.EAST, colorPanel, -300, SpringLayout.EAST, this);
 		
-		appLayout.putConstraint(SpringLayout.NORTH, colorPanel,25,SpringLayout.NORTH, this);
-		appLayout.putConstraint(SpringLayout.WEST, colorPanel,50,SpringLayout.WEST, this);
-		appLayout.putConstraint(SpringLayout.SOUTH, colorPanel,-50,SpringLayout.SOUTH, this);
+		appLayout_1.putConstraint(SpringLayout.NORTH, menuPanel, 30, SpringLayout.NORTH, this);
+		appLayout_1.putConstraint(SpringLayout.WEST, menuPanel, 30, SpringLayout.EAST, colorPanel);
+		appLayout_1.putConstraint(SpringLayout.SOUTH, menuPanel, -30, SpringLayout.SOUTH, this);
+		appLayout_1.putConstraint(SpringLayout.EAST, menuPanel, -30, SpringLayout.EAST, this);
 	}
 	
 	public void setupListeners()
 	{
 		canvas.addMouseListener(new MouseListener()
 		{
+			@Override
 			public void mouseClicked(MouseEvent e)
 			{
-				
+				canvas.drawDot(e.getX(), e.getY(), widthSlider.getValue());
 			}
 			
 			public void mousePressed(MouseEvent e)
@@ -186,17 +216,17 @@ public class ArtPanel extends JPanel
 			
 			public void mouseReleased(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 			
 			public void mouseEntered(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 			
 			public void mouseExited(MouseEvent e)
 			{
-				
+				canvas.resetPoint();
 			}
 		});
 		
@@ -204,7 +234,7 @@ public class ArtPanel extends JPanel
 		{
 			public void mouseDragged(MouseEvent e)
 			{
-				
+				canvas.drawLine(e.getX(), e.getY(), widthSlider.getValue());
 			}
 			
 			public void mouseMoved(MouseEvent e)
@@ -212,5 +242,79 @@ public class ArtPanel extends JPanel
 				
 			}
 		});
+		
+		red.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("red");
+			}
+		});
+		
+		orange.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("orange");
+			}
+		});
+		
+		yellow.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("yellow");
+			}
+		});
+		
+		green.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("green");
+			}
+		});
+		
+		blue.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("blue");
+			}
+		});
+		
+		violet.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("violet");
+			}
+		});
+		
+		random.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.setCurrentColor("random");
+			}
+		});
+		
+		saveButton.addActionListener(new ActionListener()
+		{
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.saveImage();
+			}
+		});
+		
+		loadButton.addActionListener(new ActionListener() 
+		{ 
+			public void actionPerformed(ActionEvent click)
+			{
+				canvas.loadImage();
+			}
+		});
 	}
+	
+
 }
