@@ -23,7 +23,7 @@ public class ArtFrame extends JFrame
 	public void setupFrame()
 	{
 		this.setContentPane(appPanel);
-		this.setSize(1200, 1000);
+		this.setSize(1300, 1000);
 		this.setResizable(true);
 		this.setTitle("... Garfunkel");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

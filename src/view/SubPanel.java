@@ -19,21 +19,22 @@ public class SubPanel extends JPanel
 	private BufferedImage currentCanvas;
 	private int previousX;
 	private int previousY;
+	Graphics2D myGraphics;
 	
 	public SubPanel(ArtController app)
 	{
 		super();
 		this.app = app;
-		this.currentCanvas = new BufferedImage(700, 700, BufferedImage.TYPE_INT_ARGB);
+		this.currentCanvas = new BufferedImage(1200, 1000, BufferedImage.TYPE_INT_ARGB);
 		setupPanel();
 		resetPoint();
 	}
 	
 	public void setupPanel()
 	{
-		this.setPreferredSize(new Dimension(700, 700));
-		this.setBackground(new Color(211, 211, 211));
-		this.currentColor = Color.BLACK;
+		this.setPreferredSize(new Dimension(1200, 1000));
+		this.setBackground(new Color(255, 255, 255));
+		this.currentColor = (new Color(255, 182, 193));
 	}
 	
 	public void resetPoint()
@@ -46,7 +47,33 @@ public class SubPanel extends JPanel
 	protected void paintComponent(Graphics graphics)
 	{
 		super.paintComponent(graphics);
-		graphics.drawImage(currentCanvas, 0, 0, null);
+		myGraphics = (Graphics2D) (graphics);
+		createPattern();
+	}
+	
+	public void createPattern()
+	{
+		myGraphics.setColor(currentColor);
+		myGraphics.setRenderingHint(RenderingHints.KEY_ANTIALIASING, RenderingHints.VALUE_ANTIALIAS_ON);
+		myGraphics.drawImage(currentCanvas, 0, 0, null);
+		myGraphics.drawRect(450, 350, 300, 300);
+		myGraphics.drawRect(300, 150, 600, 600);
+		
+		myGraphics.drawLine(300, 150, 450, 350);
+		myGraphics.drawLine(300, 750, 450, 650);
+		myGraphics.drawLine(900, 150, 750, 350);
+		myGraphics.drawLine(900, 750, 750, 650);
+		
+		for(int i = 450; i < 750; i += 10)
+		{
+			myGraphics.drawLine(i, 350, i, 650);
+			myGraphics.drawLine(450, i - 100, 750, i - 100);
+		}
+		
+		for(int i = 450; i < 600; i += 10)
+		{
+			
+		}
 	}
 	
 	private Color randomColor()

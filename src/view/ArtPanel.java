@@ -76,6 +76,9 @@ public class ArtPanel extends JPanel
 		random = new JButton();
 		
 		canvasPane_1 = new JScrollPane();
+		appLayout_1.putConstraint(SpringLayout.NORTH, canvasPane_1, 0, SpringLayout.NORTH, this);
+		appLayout_1.putConstraint(SpringLayout.WEST, canvasPane_1, 0, SpringLayout.WEST, this);
+		appLayout_1.putConstraint(SpringLayout.EAST, canvasPane_1, -100, SpringLayout.EAST, this);
 
 		
 		
@@ -88,6 +91,8 @@ public class ArtPanel extends JPanel
 		colorPanel = new JPanel(new GridLayout(0, 1));
 
 		menuPanel = new JPanel(new GridLayout(0, 1));
+		appLayout_1.putConstraint(SpringLayout.WEST, menuPanel, -90, SpringLayout.EAST, this);
+		appLayout_1.putConstraint(SpringLayout.SOUTH, menuPanel, -30, SpringLayout.SOUTH, this);
 
 
 		
@@ -98,6 +103,7 @@ public class ArtPanel extends JPanel
 		setupScrollPane();
 		setupLayout();
 		setupListeners();
+
 	}
 	
 	public void setupButtons()
@@ -113,10 +119,10 @@ public class ArtPanel extends JPanel
 	
 	public void setupPanel()
 	{
-		this.setPreferredSize(new Dimension(1200, 1000));
+		this.setPreferredSize(new Dimension(1300, 1000));
 		this.setLayout(appLayout_1);
 		this.add(menuPanel);
-		this.add(colorPanel);
+//		this.add(colorPanel);
 		this.add(canvasPane_1);
 	}
 	
@@ -183,19 +189,14 @@ public class ArtPanel extends JPanel
 	
 	public void setupLayout()
 	{
-		appLayout_1.putConstraint(SpringLayout.NORTH, canvasPane_1, 80, SpringLayout.NORTH, this);
-		appLayout_1.putConstraint(SpringLayout.WEST, canvasPane_1, 30, SpringLayout.WEST, this);
-		appLayout_1.putConstraint(SpringLayout.SOUTH, canvasPane_1, -80, SpringLayout.SOUTH, this);
-		appLayout_1.putConstraint(SpringLayout.EAST, canvasPane_1, -450, SpringLayout.EAST, this);
+		appLayout_1.putConstraint(SpringLayout.SOUTH, canvasPane_1, 0, SpringLayout.SOUTH, this);
 		
-		appLayout_1.putConstraint(SpringLayout.NORTH, colorPanel, 30, SpringLayout.NORTH, this);
-		appLayout_1.putConstraint(SpringLayout.WEST, colorPanel, 30, SpringLayout.EAST, canvasPane_1);
-		appLayout_1.putConstraint(SpringLayout.SOUTH, colorPanel, -30, SpringLayout.SOUTH, this);
-		appLayout_1.putConstraint(SpringLayout.EAST, colorPanel, -300, SpringLayout.EAST, this);
+//		appLayout_1.putConstraint(SpringLayout.NORTH, colorPanel, 30, SpringLayout.NORTH, this);
+//		appLayout_1.putConstraint(SpringLayout.WEST, colorPanel, 30, SpringLayout.EAST, canvasPane_1);
+//		appLayout_1.putConstraint(SpringLayout.SOUTH, colorPanel, -30, SpringLayout.SOUTH, this);
+//		appLayout_1.putConstraint(SpringLayout.EAST, colorPanel, -300, SpringLayout.EAST, this);
 		
 		appLayout_1.putConstraint(SpringLayout.NORTH, menuPanel, 30, SpringLayout.NORTH, this);
-		appLayout_1.putConstraint(SpringLayout.WEST, menuPanel, 30, SpringLayout.EAST, colorPanel);
-		appLayout_1.putConstraint(SpringLayout.SOUTH, menuPanel, -30, SpringLayout.SOUTH, this);
 		appLayout_1.putConstraint(SpringLayout.EAST, menuPanel, -30, SpringLayout.EAST, this);
 	}
 	
