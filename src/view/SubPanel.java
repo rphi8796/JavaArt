@@ -64,16 +64,23 @@ public class SubPanel extends JPanel
 		myGraphics.drawLine(900, 150, 750, 350);
 		myGraphics.drawLine(900, 750, 750, 650);
 		
-		for(int i = 450; i < 750; i += 10)
+		myGraphics.drawLine(0, 0, 300, 150);
+		myGraphics.drawLine(0, 1000, 300, 750);
+		
+		for(int x = 450; x < 750; x += 10)
 		{
-			myGraphics.drawLine(i, 350, i, 650);
-			myGraphics.drawLine(450, i - 100, 750, i - 100);
+			myGraphics.drawLine(x, 350, x, 650);
+			myGraphics.drawLine(450, x - 100, 750, x - 100);
 		}
 		
-		for(int i = 450; i < 600; i += 10)
+		for(int i = 460, x = -140; i < 750; i += 10, x += 10)
 		{
-			
+			myGraphics.drawLine(i, 350, i + x, 150);
 		}
+		
+		
+
+		
 	}
 	
 	private Color randomColor()
